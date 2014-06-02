@@ -1,9 +1,7 @@
 # World Curling Championship 2015 #
 
-다음은 수행평가에 대한 내용이다
+우리는 겜프 수행평가를 위해 극노잼게임을 만들어야 한다
 
-### What is this repository for? ###
+### 언제까지 해야하는가? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* 7월 15일 화요일
