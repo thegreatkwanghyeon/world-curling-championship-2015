@@ -50,7 +50,6 @@ void Director::replaceScene(SceneBase* scene){
 
 void Director::update(){
 	sceneList.back()->update();
-	printf("%d\n",sceneList.size());
 }
 
 void Director::draw(sf::RenderWindow& window){

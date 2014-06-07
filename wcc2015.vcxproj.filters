@@ -13,22 +13,25 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Scene">
-      <UniqueIdentifier>{590dcb99-7a1c-4e27-8779-0856ab050b52}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Basis">
       <UniqueIdentifier>{47f28dec-ba68-4918-983b-37b07154684a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\UIElements">
+      <UniqueIdentifier>{52198ab0-ac8a-412a-81df-fdb96b22df09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Scenes">
+      <UniqueIdentifier>{590dcb99-7a1c-4e27-8779-0856ab050b52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameScene.h">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>소스 파일\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>소스 파일\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="SceneBase.h">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>소스 파일\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Director.h">
       <Filter>소스 파일\Basis</Filter>
@@ -42,19 +45,28 @@
     <ClInclude Include="targetver.h">
       <Filter>소스 파일\Basis</Filter>
     </ClInclude>
+    <ClInclude Include="UIScene.h">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="arrow.h">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="powerGauge.h">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="GameScene.cpp">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>소스 파일\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="TitleScene.cpp">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>소스 파일\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="SceneBase.cpp">
-      <Filter>소스 파일\Scene</Filter>
+      <Filter>소스 파일\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Director.cpp">
       <Filter>소스 파일\Basis</Filter>
@@ -64,6 +76,15 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일\Basis</Filter>
+    </ClCompile>
+    <ClCompile Include="UIScene.cpp">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="arrow.cpp">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="powerGauge.cpp">
+      <Filter>소스 파일\UIElements</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
