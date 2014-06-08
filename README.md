@@ -9,4 +9,4 @@
 
 ### 컬링장 규격 ###
 
-[dimension.jpg](https://bitbucket.org/repo/L5yEoz/images/2400721821-dimension.jpg)
+[Curling Field Dimension](https://bitbucket.org/repo/L5yEoz/images/2400721821-dimension.jpg)
