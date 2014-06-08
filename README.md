@@ -12,4 +12,4 @@
 [Curling Field Dimension](https://bitbucket.org/repo/L5yEoz/images/2400721821-dimension.jpg)
 
 ### 돌멩이 규격 ###
-0.95 ft
+지름 : 0.95 ft
