@@ -4,4 +4,12 @@
 
 ### 언제까지 해야하는가? ###
 
-* 7월 15일 화요일
+* 7월 15일 화요일!
+
+
+### 컬링장 규격 ###
+
+[Curling Field Dimension](https://bitbucket.org/repo/L5yEoz/images/2400721821-dimension.jpg)
+
+### 돌멩이 규격 ###
+지름 : 0.95 ft
