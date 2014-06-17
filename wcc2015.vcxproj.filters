@@ -22,6 +22,9 @@
     <Filter Include="소스 파일\Scenes">
       <UniqueIdentifier>{590dcb99-7a1c-4e27-8779-0856ab050b52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\UIElements\Score">
+      <UniqueIdentifier>{5595b12a-dc37-4ce1-8c39-86cc7da9ddba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameScene.h">
@@ -60,6 +63,12 @@
     <ClInclude Include="Button.h">
       <Filter>소스 파일\UIElements</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>소스 파일\UIElements\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="Scoreboard.h">
+      <Filter>소스 파일\UIElements\Score</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -97,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>소스 파일\UIElements\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="Scoreboard.cpp">
+      <Filter>소스 파일\UIElements\Score</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
