@@ -15,7 +15,7 @@ int main(){
 	settings.antialiasingLevel = 8;
 
 	Director *m_pDirector = Director::getInstance();
-	m_pDirector->pushScene(new UIScene());
+	m_pDirector->pushScene(new GameScene());
 
 	view.reset(FloatRect(0, 0, constants::INTERNAL_WIDTH, constants::INTERNAL_HEIGHT));
 

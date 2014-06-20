@@ -19,7 +19,7 @@ Arrow::~Arrow(){
 
 void Arrow::update(){
 	//setReferencePoint((Vector2f)sf::Mouse::getPosition());
-	spArrow.setRotation(direction);
+	spArrow.setRotation(direction * 180 / PI + 90);
 
 }
 
@@ -29,7 +29,7 @@ void Arrow::draw(RenderWindow &window){
 }
 
 void Arrow::setReferencePoint(Vector2f point){
-	direction = atan2(point.y - spArrow.getPosition().y, point.x - spArrow.getPosition().x)*180/PI + 90;
+	direction = atan2(point.y - spArrow.getPosition().y, point.x - spArrow.getPosition().x);
 }
 
 float Arrow::getDirection(){
