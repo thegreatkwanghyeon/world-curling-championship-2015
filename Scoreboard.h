@@ -24,11 +24,21 @@ class Scoreboard{
 			Text txtScore;
 		} ScorePanel;
 
+		Texture texCursor;
+		Sprite spCursor;
+		Texture texEndPanel;
+		Sprite spEndPanel;
+
+		Text txtCurrentEnd;
 
 		ScoreManager *scoreList;
 		ScorePanel top, bottom;
 
 		Font font;
+
+		int lsfe;
+		int currentTurn;
+		int currentEnd;
 
 		
 
@@ -39,6 +49,8 @@ class Scoreboard{
 		~Scoreboard();
 		void update();
 		void draw(RenderWindow &window);
+		void nextTurn();
+		void pushScoreAndGoNextEnd(int leftScore, int rightScore);
 
 		
 

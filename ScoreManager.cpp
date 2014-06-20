@@ -21,7 +21,7 @@ void ScoreManager::setLSFE(int team){
 }
 
 int ScoreManager::getLSFE(){
-	if(lsfe)
+	if(lsfe == Team::Left || lsfe == Team::Right)
 		return lsfe;
 	else 
 		return -1;
