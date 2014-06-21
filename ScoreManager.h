@@ -16,17 +16,18 @@ class ScoreManager{
 			unsigned int rightScore;
 		} Score;
 
-		enum Team{
-			Left,
-			Right
-		};
+		
 	
 		vector<Score> scoreList;
 		int lsfe; //Last Stone First End; 어떤 팀이 첫엔드에 후공잡았는지?
 
-
 	public:
 		
+		enum Team{
+			Left,
+			Right
+		};
+
 		ScoreManager();
 		~ScoreManager();
 		void pushScore(int leftScore, int rightScore);

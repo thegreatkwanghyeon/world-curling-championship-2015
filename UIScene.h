@@ -15,6 +15,7 @@ class UIScene : public SceneBase{
 		Arrow *arrow;
 		PowerGauge *powerGauge;
 		Button *button;
+		Button *buttonEnd;
 		ScoreManager *scoreManager;
 		Scoreboard *scoreboard;
 
