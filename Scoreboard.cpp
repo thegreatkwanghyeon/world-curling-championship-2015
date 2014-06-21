@@ -13,14 +13,30 @@ Scoreboard::Scoreboard(ScoreManager &scoreList, String teamNameTop, String teamN
 	//Graphic processing
 	top.texPanel.loadFromFile("image/ui/scoreboard.png");
 	top.spPanel.setTexture(top.texPanel);
+	top.texStone.loadFromFile("image/ui/yellowstone.png");
+	top.spStone.setTexture(top.texStone);
 	bottom.texPanel.loadFromFile("image/ui/scoreboard.png");
 	bottom.spPanel.setTexture(bottom.texPanel);
+	bottom.texStone.loadFromFile("image/ui/redstone.png");
+	bottom.spStone.setTexture(bottom.texStone);
 	texEndPanel.loadFromFile("image/ui/scoreboard.png");
 	spEndPanel.setTexture(texEndPanel);
+
+
+
 
 	top.spPanel.setPosition(0.0,0.0);
 	bottom.spPanel.setPosition(0.0, bottom.spPanel.getTexture()->getSize().y);
 	spEndPanel.setPosition(0.0, bottom.spPanel.getTexture()->getSize().y*2.0);
+
+	for(int i=0; i<8; i++){
+		top.vecStone.push_back(top.spStone);
+		top.vecStone.at(i).setPosition(top.texPanel.getSize().x + i*top.vecStone.at(i).getTexture()->getSize().x, 
+										top.texPanel.getSize().y/2 - top.vecStone.at(i).getTexture()->getSize().y/2);
+		bottom.vecStone.push_back(bottom.spStone);
+		bottom.vecStone.at(i).setPosition(bottom.texPanel.getSize().x + i*bottom.vecStone.at(i).getTexture()->getSize().x, 
+										bottom.texPanel.getSize().y/2 - bottom.vecStone.at(i).getTexture()->getSize().y/2 + bottom.spPanel.getTexture()->getSize().y);
+	}
 
 	texCursor.loadFromFile("image/ui/cursor.png");
 	spCursor.setTexture(texCursor);
@@ -106,16 +122,31 @@ void Scoreboard::draw(RenderWindow &window){
 	window.draw(bottom.txtTeamName);
 	window.draw(txtCurrentEnd);
 	window.draw(spCursor);
+
+	for(auto stone: top.vecStone){
+		window.draw(stone);
+	}
+	for(auto stone: bottom.vecStone){
+		window.draw(stone);
+	}
 }
 
 void Scoreboard::nextTurn(){
-	if(currentTurn == ScoreManager::Team::Left)
+	if(currentTurn == ScoreManager::Team::Left){
 		currentTurn = ScoreManager::Team::Right;
-	else if(currentTurn == ScoreManager::Team::Right)
+		top.vecStone.pop_back();
+	}
+	else if(currentTurn == ScoreManager::Team::Right){
 		currentTurn = ScoreManager::Team::Left;
+		bottom.vecStone.pop_back();
+	}
 }
 
 void Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
+	if(!top.vecStone.empty() || !bottom.vecStone.empty()){
+		printf("Can't go to next end\n");
+		return;
+	}
 	scoreList->pushScore(leftScore, rightScore);
 	currentEnd++;
 
@@ -127,4 +158,14 @@ void Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
 		nextTurn();
 	}
 
+	for(int i=0; i<8; i++){
+		//top.vecStone.clear();
+		top.vecStone.push_back(top.spStone);
+		top.vecStone.at(i).setPosition(top.texPanel.getSize().x + i*top.vecStone.at(i).getTexture()->getSize().x, 
+										top.texPanel.getSize().y/2 - top.vecStone.at(i).getTexture()->getSize().y/2);
+		//bottom.vecStone.clear();
+		bottom.vecStone.push_back(bottom.spStone);
+		bottom.vecStone.at(i).setPosition(bottom.texPanel.getSize().x + i*bottom.vecStone.at(i).getTexture()->getSize().x, 
+										bottom.texPanel.getSize().y/2 - bottom.vecStone.at(i).getTexture()->getSize().y/2 + bottom.spPanel.getTexture()->getSize().y);
+	}
 }

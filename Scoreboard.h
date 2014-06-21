@@ -22,6 +22,11 @@ class Scoreboard{
 
 			//점수
 			Text txtScore;
+
+			//남은 돌멩이
+			Texture texStone;
+			Sprite spStone;
+			vector<Sprite> vecStone;
 		} ScorePanel;
 
 		Texture texCursor;
