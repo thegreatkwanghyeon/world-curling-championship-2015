@@ -19,6 +19,16 @@ UIScene::~UIScene(){
 
 }
 
+float UIScene::getDirection()
+{
+	return arrow->getDirection();
+}
+
+float UIScene::getPower()
+{
+	return powerGauge->getValue();
+}
+
 void UIScene::update(){
 	arrow->update();
 	powerGauge->update();

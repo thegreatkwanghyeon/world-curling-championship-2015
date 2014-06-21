@@ -21,6 +21,10 @@ class UIScene : public SceneBase{
 	public:
 		UIScene();
 		~UIScene();
+
+		float getDirection();
+		float getPower();
+
 		void update();
 		void draw(RenderWindow &window);
 };
