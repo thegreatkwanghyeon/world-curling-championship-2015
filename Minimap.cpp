@@ -35,3 +35,7 @@ void Minimap::removeStone(int idx){
 	if(idx<vecStones.size()) //벡터 메모리 범위 초과 방지
 		vecStones.erase(vecStones.begin() + idx);
 }
+
+void Minimap::clearStone(){
+	vecStones.clear();
+}

@@ -35,7 +35,7 @@ UIScene::UIScene(){
 	minimap->pushStone(randY/2.0, randX/3.0, Minimap::Color::yellow);
 	minimap->pushStone(0.0, 0.0, Minimap::Color::red);
 	minimap->pushStone(0.0, 0.0, Minimap::Color::yellow); //이건 지워질 예정
-	minimap->removeStone(3); 
+	minimap->removeStone(3);  //지움
 	
 }
 UIScene::~UIScene(){

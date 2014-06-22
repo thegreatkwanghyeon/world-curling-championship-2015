@@ -47,4 +47,5 @@ class Minimap{
 		void draw(RenderWindow &window);
 		void pushStone(float x, float y, int color);
 		void removeStone(int idx);
+		void clearStone();
 };
