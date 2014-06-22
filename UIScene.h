@@ -6,6 +6,7 @@
 #include "Button.h"
 #include "ScoreManager.h"
 #include "Scoreboard.h"
+#include "SweepingGauge.h"
 
 using namespace sf;
 using namespace std;
@@ -16,8 +17,13 @@ class UIScene : public SceneBase{
 		PowerGauge *powerGauge;
 		Button *button;
 		Button *buttonEnd;
+		Button *buttonClear;
 		ScoreManager *scoreManager;
 		Scoreboard *scoreboard;
+		SweepingGauge *sweepingGauge;
+
+		Font font;
+		Text sweepingRecord;
 
 	public:
 		UIScene();

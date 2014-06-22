@@ -8,7 +8,7 @@ Button::Button(const String path, const Vector2f position = Vector2f(0,0)){
 	spButton.setPosition(this->position = position);
 	buttonRect = Rect<float>(position, (Vector2f)texButton.getSize());
 
-	font.loadFromFile("font/script.ttf");
+	font.loadFromFile("font/italicNumber.ttf");
 }
 
 Button::~Button(){
@@ -34,10 +34,12 @@ void Button::draw(RenderWindow &window){
 void Button::setText(const String name, const int characterSize = 14){
 	(this->name).setString(name);
 	(this->name).setFont(font);
+	(this->name).setCharacterSize(characterSize);
 	(this->name).setPosition(
 		position.x + texButton.getSize().x/2 - (this->name).getLocalBounds().width/2,
 		position.y + texButton.getSize().y/2 - (this->name).getLocalBounds().height*1.25
 		);
+	
 }
 
 Vector2f Button::getPosition(){
