@@ -72,6 +72,9 @@
     <ClInclude Include="SweepingGauge.h">
       <Filter>소스 파일\UIElements</Filter>
     </ClInclude>
+    <ClInclude Include="Minimap.h">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -117,6 +120,9 @@
       <Filter>소스 파일\UIElements\Score</Filter>
     </ClCompile>
     <ClCompile Include="SweepingGauge.cpp">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Minimap.cpp">
       <Filter>소스 파일\UIElements</Filter>
     </ClCompile>
   </ItemGroup>

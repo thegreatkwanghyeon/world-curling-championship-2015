@@ -7,6 +7,7 @@
 #include "ScoreManager.h"
 #include "Scoreboard.h"
 #include "SweepingGauge.h"
+#include "Minimap.h"
 
 using namespace sf;
 using namespace std;
@@ -21,6 +22,8 @@ class UIScene : public SceneBase{
 		ScoreManager *scoreManager;
 		Scoreboard *scoreboard;
 		SweepingGauge *sweepingGauge;
+		Minimap *minimap;
+
 
 		Font font;
 		Text sweepingRecord;
