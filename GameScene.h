@@ -8,7 +8,8 @@ using namespace sf;
 using namespace std;
 
 const float SCALE = 30.f;
-const float SPEED = 100.f;
+const float STONE_DIAMETER = 1.7f;//ÇÈ¼¿
+const float SPEED = 30.f;//¼Óµµ
 
 class GameScene : public SceneBase{
 	private:

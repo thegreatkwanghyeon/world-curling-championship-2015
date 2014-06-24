@@ -6,13 +6,14 @@ GameScene::GameScene() : lastStone(NULL), applyImpulse(true) {
 
 	printf("make GameScene\n");
 
-	stoneTexture.loadFromFile("image/box.png");
+	stoneTexture.loadFromFile("image/stone.png");
 
 	b2Vec2 gravity(0.0f, 0.0f);
 	world = new b2World(gravity);
 
 	uiScene = new UIScene();
 
+	createStone(400, 200);
 	createStone(400, 500);
 
 }
@@ -28,15 +29,15 @@ void GameScene::createStone(const int &x, const int &y)
 	BodyDef.type = b2_dynamicBody;
 	b2Body* Body = world->CreateBody(&BodyDef);
 
-	lastStone = Body;
-
 	b2CircleShape Shape;
-	Shape.m_radius = 0.5f;
+	Shape.m_radius = STONE_DIAMETER / 2;
 	b2FixtureDef FixtureDef;
-	FixtureDef.density = 18.5f;
+	FixtureDef.density = 0.5f;
 	FixtureDef.friction = 100.7f;
 	FixtureDef.shape = &Shape;
 	Body->CreateFixture(&FixtureDef);
+
+	lastStone = Body;
 }
 
 void GameScene::update()
@@ -45,7 +46,13 @@ void GameScene::update()
 	uiScene->update();
 
 	world->Step(1/60.f, 8, 3);
-	//view.move(0, (lastStone->GetLinearVelocity().y));
+	
+	if (lastStone->GetPosition().y * SCALE < 600 / 3 && view.getCenter().y - view.getSize().y <= 8000 + 800)
+	{
+		std::cout << "moving view" << view.getCenter().y - view.getSize().y << std::endl;
+		view.move(0, lastStone->GetLinearVelocity().y * 0.5);//ºä ÀÌµ¿
+	}
+
 	
 	if ( applyImpulse && Keyboard::isKeyPressed(Keyboard::Space))
 	{
@@ -72,7 +79,7 @@ void GameScene::draw(RenderWindow &window){
 			sf::Sprite sprite;
 
 			sprite.setTexture(stoneTexture);
-			sprite.setOrigin(16.f, 16.f);
+			sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
 			sprite.setPosition(SCALE * BodyIterator->GetPosition().x, SCALE * BodyIterator->GetPosition().y);
 			sprite.setRotation(BodyIterator->GetAngle() * 180 / b2_pi);
 			window.draw(sprite);
