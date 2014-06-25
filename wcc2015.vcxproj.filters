@@ -27,13 +27,72 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scoreboard.cpp">
+      <Filter>소스 파일\UIElements\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreManager.cpp">
+      <Filter>소스 파일\UIElements\Score</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="UIScene.cpp">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Director.cpp">
+      <Filter>소스 파일\Basis</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>소스 파일\Basis</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일\Basis</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>소스 파일\Basis</Filter>
+    </ClCompile>
+    <ClCompile Include="Tileset.cpp">
+      <Filter>소스 파일\Basis</Filter>
+    </ClCompile>
+    <ClCompile Include="arrow.cpp">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Minimap.cpp">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="powerGauge.cpp">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="SweepingGauge.cpp">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scoreboard.h">
+      <Filter>소스 파일\UIElements\Score</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreManager.h">
+      <Filter>소스 파일\UIElements\Score</Filter>
+    </ClInclude>
     <ClInclude Include="GameScene.h">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
       <Filter>소스 파일\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>소스 파일\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="SceneBase.h">
+    <ClInclude Include="UIScene.h">
       <Filter>소스 파일\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Director.h">
@@ -48,76 +107,23 @@
     <ClInclude Include="targetver.h">
       <Filter>소스 파일\Basis</Filter>
     </ClInclude>
-    <ClInclude Include="UIScene.h">
-      <Filter>소스 파일\Scenes</Filter>
+    <ClInclude Include="Tileset.h">
+      <Filter>소스 파일\Basis</Filter>
     </ClInclude>
     <ClInclude Include="arrow.h">
-      <Filter>소스 파일\UIElements</Filter>
-    </ClInclude>
-    <ClInclude Include="powerGauge.h">
       <Filter>소스 파일\UIElements</Filter>
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>소스 파일\UIElements</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreManager.h">
-      <Filter>소스 파일\UIElements\Score</Filter>
-    </ClInclude>
-    <ClInclude Include="Scoreboard.h">
-      <Filter>소스 파일\UIElements\Score</Filter>
-    </ClInclude>
     <ClInclude Include="Minimap.h">
+      <Filter>소스 파일\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="powerGauge.h">
       <Filter>소스 파일\UIElements</Filter>
     </ClInclude>
     <ClInclude Include="SweepingGauge.h">
       <Filter>소스 파일\UIElements</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>소스 파일\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>소스 파일\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="SceneBase.cpp">
-      <Filter>소스 파일\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Director.cpp">
-      <Filter>소스 파일\Basis</Filter>
-    </ClCompile>
-    <ClCompile Include="Global.cpp">
-      <Filter>소스 파일\Basis</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일\Basis</Filter>
-    </ClCompile>
-    <ClCompile Include="UIScene.cpp">
-      <Filter>소스 파일\Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="arrow.cpp">
-      <Filter>소스 파일\UIElements</Filter>
-    </ClCompile>
-    <ClCompile Include="powerGauge.cpp">
-      <Filter>소스 파일\UIElements</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>소스 파일\UIElements</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoreManager.cpp">
-      <Filter>소스 파일\UIElements\Score</Filter>
-    </ClCompile>
-    <ClCompile Include="Scoreboard.cpp">
-      <Filter>소스 파일\UIElements\Score</Filter>
-    </ClCompile>
-    <ClCompile Include="Minimap.cpp">
-      <Filter>소스 파일\UIElements</Filter>
-    </ClCompile>
-    <ClCompile Include="SweepingGauge.cpp">
-      <Filter>소스 파일\UIElements</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

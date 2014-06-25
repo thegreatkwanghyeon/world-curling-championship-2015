@@ -9,12 +9,15 @@ using namespace std;
 
 const float SCALE = 30.f;
 const float STONE_DIAMETER = 1.7f;//픽셀
-const float SPEED = 30.f;//속도
+const float SPEED = 100.f;//속도
 
 class GameScene : public SceneBase{
 	private:
 
 		Texture stoneTexture;
+		Texture groundTexture;
+
+		Sprite groundSprite;
 
 		b2World* world;
 
@@ -31,6 +34,7 @@ class GameScene : public SceneBase{
 		~GameScene();
 
 		void createStone(const int &x, const int &y);
+		void createGround();
 
 		void update();
 		void draw(RenderWindow &window);
