@@ -13,6 +13,7 @@ UIScene::UIScene(){
 	powerGauge = new PowerGauge();
 	button = new Button("image/ui/button.png", Vector2f(500.0,450.0));
 	button->setText("next turn", 20);
+
 	buttonEnd = new Button("image/ui/button.png", Vector2f(500.0, 530.0));
 	buttonEnd->setText("next end", 20);
 	buttonClear = new Button("image/ui/button.png", Vector2f(500.0, 390.0));

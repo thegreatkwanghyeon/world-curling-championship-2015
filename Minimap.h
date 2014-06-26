@@ -6,7 +6,7 @@ using namespace std;
 class Minimap{
 	private:
 
-		const Vector2f mapCoord;
+		Vector2f mapCoord;
 
 		typedef struct stone{
 			float x;
@@ -17,6 +17,8 @@ class Minimap{
 			stone(float x, float y, Texture &texStone, Vector2f mapCoord){
 				this->spStone.setTexture(texStone);
 				this->spStone.setOrigin(texStone.getSize().x/2, texStone.getSize().y/2);
+				this->x = x;
+				this->y = y;
 				spStone.setPosition(
 						mapCoord.x + 100.0 + x,
 						mapCoord.y + 100.0 + y

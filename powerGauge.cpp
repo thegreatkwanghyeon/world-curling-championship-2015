@@ -15,7 +15,8 @@ PowerGauge::~PowerGauge(){
 
 void PowerGauge::update(){
 	argumentValue += clock.getElapsedTime().asSeconds() * argumentMultiflier;
-	powerValue = (float)(sin(argumentValue) + 1) * 0.5f;
+	//powerValue = (float)(sin(argumentValue) + 1) * 0.5f;
+	powerValue = 0.5f;
 	setTextureRect(&spValue, powerValue);
 	clock.restart();
 }

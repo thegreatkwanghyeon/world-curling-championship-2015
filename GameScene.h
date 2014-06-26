@@ -9,7 +9,7 @@ using namespace std;
 
 const float SCALE = 30.f;
 const float STONE_DIAMETER = 1.7f;//픽셀
-const float SPEED = 100.f;//속도
+const float SPEED =70.5f;//속도
 
 class GameScene : public SceneBase{
 	private:

@@ -17,8 +17,10 @@ GameScene::GameScene() : lastStone(NULL), applyImpulse(true) {
 
 	uiScene = new UIScene();
 
-	createStone(400, -7000);
+	//createStone(400, -7000);
 	createStone(400, 500);
+
+	//view.setCenter(Vector2f(400, lastStone->GetPosition().y * SCALE));
 
 }
 GameScene::~GameScene(){
@@ -71,21 +73,22 @@ void GameScene::update()
 
 	world->Step(1/60.f, 8, 3);
 	
-	if (lastStone->GetPosition().y * SCALE < 600 / 3 && view.getCenter().y - view.getSize().y > -8000)
+	std::cout << "stone" << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
+
+	if (view.getCenter().y - view.getSize().y / 2 >= -8000 + 600 + 27)
 	{
-		std::cout << "moving view" << view.getCenter().y - view.getSize().y << std::endl;
-		view.move(0, lastStone->GetLinearVelocity().y * 0.5);//뷰 이동
+		//view.move(0, lastStone->GetLinearVelocity().y * 0.01);//뷰 이동
+		view.setCenter(Vector2f(400, (lastStone->GetPosition().y * SCALE) - 200));
 	}
 
-	
 	if ( applyImpulse && Keyboard::isKeyPressed(Keyboard::Space))
 	{
 		std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
 		lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
 		lastStone->SetLinearDamping(0.1f);//감속
-		lastStone->SetAngularDamping(0.01f);
+	//	lastStone->SetAngularDamping(1000.0f);
 		//lastStone->ApplyForceToCenter(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), true);//1초간 지속적으로 충격을 주는 함수
-		lastStone->ApplyTorque(100.f, true);//회전력
+		//lastStone->ApplyTorque(100.f, true);//회전력
 		applyImpulse = false;
 	}
 	

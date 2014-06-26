@@ -26,8 +26,8 @@ Scoreboard::Scoreboard(ScoreManager &scoreList, String teamNameTop, String teamN
 
 
 	top.spPanel.setPosition(0.0,0.0);
-	bottom.spPanel.setPosition(0.0, bottom.spPanel.getTexture()->getSize().y);
-	spEndPanel.setPosition(0.0, bottom.spPanel.getTexture()->getSize().y*2.0);
+	bottom.spPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y);
+	spEndPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y*2.0);
 
 	for(int i=0; i<8; i++){
 		top.vecStone.push_back(top.spStone);
@@ -91,6 +91,32 @@ void Scoreboard::update(){
 	bottom.txtScore.setString(to_string(bottomTotal));
 	txtCurrentEnd.setString("END " +to_string(currentEnd));
 
+
+
+
+}
+
+void Scoreboard::draw(RenderWindow &window){
+	
+	top.spPanel.setPosition(window.mapPixelToCoords(Vector2i(0, 0)));
+	bottom.spPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y);
+	spEndPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y*2.0);
+
+	top.txtTeamName.setPosition(
+		top.spPanel.getPosition().x + top.txtTeamName.getLocalBounds().width/2,
+		top.spPanel.getPosition().y + top.spPanel.getTexture()->getSize().y/2 - top.txtTeamName.getLocalBounds().height/1.25
+	);
+
+	bottom.txtTeamName.setPosition(
+		bottom.spPanel.getPosition().x + bottom.txtTeamName.getLocalBounds().width/2,
+		bottom.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y/2 - bottom.txtTeamName.getLocalBounds().height/1.25
+	);
+
+	txtCurrentEnd.setPosition(
+		spEndPanel.getPosition().x +spEndPanel.getTexture()->getSize().x/2 - txtCurrentEnd.getLocalBounds().width/2,
+		spEndPanel.getPosition().y +spEndPanel.getTexture()->getSize().y/2 - txtCurrentEnd.getLocalBounds().height/1.25
+	);
+
 	top.txtScore.setPosition(
 		top.spPanel.getPosition().x + top.spPanel.getTexture()->getSize().x - top.txtScore.getLocalBounds().width-15,
 		top.spPanel.getPosition().y + top.spPanel.getTexture()->getSize().y/2 - top.txtScore.getLocalBounds().height/1.25
@@ -108,11 +134,6 @@ void Scoreboard::update(){
 		spCursor.setPosition(0.0, 0.0);
 
 
-
-}
-
-void Scoreboard::draw(RenderWindow &window){
-
 	window.draw(top.spPanel);
 	window.draw(bottom.spPanel);
 	window.draw(spEndPanel);
@@ -128,7 +149,7 @@ void Scoreboard::draw(RenderWindow &window){
 	}
 	for(auto stone: bottom.vecStone){
 		window.draw(stone);
-	}
+	}	
 }
 
 void Scoreboard::nextTurn(){

@@ -18,10 +18,25 @@ void Minimap::update(){
 }
 
 void Minimap::draw(RenderWindow &window){
+
+	spMap.setPosition(window.mapPixelToCoords(Vector2i(600, 0)));
+
+	for(auto &iter_stone: vecStones){
+
+		iter_stone.spStone.setPosition(
+
+			spMap.getPosition().x + 100.0 + iter_stone.x,
+			spMap.getPosition().y + 100.0 + iter_stone.y
+
+			);
+	}
+
 	window.draw(spMap);
+
 	for(auto stone: vecStones){
 		window.draw(stone.spStone);
 	}
+	
 }
 
 void Minimap::pushStone(float x, float y, int color){
