@@ -2,7 +2,7 @@
 #include "GameScene.h"
 #include "Global.h"
 
-GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.1f) {
+GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.1f), moveView(false) {
 
 	printf("make GameScene\n");
 
@@ -77,7 +77,7 @@ void GameScene::update()
 	
 	//std::cout << "stone" << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
 
-	if (view.getCenter().y - view.getSize().y / 2 >= -8000 + 600 + 27)
+	if (!moveView && view.getCenter().y - view.getSize().y / 2 >= -8000 + 600 + 27)
 	{
 		//view.move(0, lastStone->GetLinearVelocity().y * 0.01);//뷰 이동
 		view.setCenter(Vector2f(400, (lastStone->GetPosition().y * SCALE) - 200));
@@ -85,6 +85,7 @@ void GameScene::update()
 
 	if ( applyImpulse)
 	{
+
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
 			std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
 			lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
@@ -100,20 +101,30 @@ void GameScene::update()
 		linearDamping = 0.1 - (uiScene->getSpeed() / 500);
 		lastStone->SetLinearDamping(linearDamping);//감속
 		
-		if (lastStone->GetLinearVelocity().y >= -0.2)
+		if (!moveView && lastStone->GetLinearVelocity().y >= -0.2)
 		{
+
+			moveView = true;
+			viewMovingSpeed = abs((view.getCenter().y + 300) / 20);
+
 			uiScene->nextTurn();
-			createStone(400, 500);
-
-			view.setCenter(400, 300);
-
-			applyImpulse = true;
 
 		}
 		
 	}
 	
+	if (moveView)
+	{
+		view.move(0, viewMovingSpeed);
 
+		if (view.getCenter().y >= 300)
+		{
+			createStone(400, 500);
+			applyImpulse = true;
+
+			moveView = false;
+		}
+	}
 
 }
 

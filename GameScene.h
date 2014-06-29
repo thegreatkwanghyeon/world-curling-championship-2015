@@ -31,6 +31,9 @@ class GameScene : public SceneBase{
 
 		float linearDamping;
 
+		bool moveView;
+		float viewMovingSpeed;
+
 	public:
 		GameScene();
 		~GameScene();
