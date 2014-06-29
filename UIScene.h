@@ -18,7 +18,6 @@ class UIScene : public SceneBase{
 		PowerGauge *powerGauge;
 		Button *button;
 		Button *buttonEnd;
-		Button *buttonClear;
 		ScoreManager *scoreManager;
 		Scoreboard *scoreboard;
 		SweepingGauge *sweepingGauge;

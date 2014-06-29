@@ -1,33 +1,30 @@
 #include "stdafx.h"
 #include "SweepingGauge.h"
 
-SweepingGauge::SweepingGauge() : isPressed(false), sweepigSpeed(0.0f), sweepingCount(0){
+SweepingGauge::SweepingGauge() : isPressed(false), sweepigSpeed(0.0f){
 }
 
 SweepingGauge::~SweepingGauge(){
 }
 
 void SweepingGauge::update(){
+	printf("listClock.size() = %d\n", listClock.size());
 	if(Keyboard::isKeyPressed(Keyboard::Space) && isPressed==false){
 		isPressed = true;
-		sweepingCount++;
-		if(sweepingCount == 1){
-			clock.restart();
-		}
+		listClock.push_back(new Clock());
+		listClock.back()->restart();
 	}else if(!Keyboard::isKeyPressed(Keyboard::Space)){
 		isPressed = false;
 	}
 
-	//printf("%.2f\n", (float)sweepingCount/clock.getElapsedTime().asSeconds());
+	if(!(listClock.empty()))
+		if(listClock.front()->getElapsedTime().asSeconds()>1.0)
+			listClock.pop_front();
 }
 
 void SweepingGauge::draw(RenderWindow &window){
 }
 
-void SweepingGauge::clearRecord(){
-	sweepingCount = 0;
-}
-
 float SweepingGauge::getSpeed(){
-	return (float)sweepingCount/clock.getElapsedTime().asSeconds();
+	return listClock.size();
 }

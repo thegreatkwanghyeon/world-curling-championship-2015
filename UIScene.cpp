@@ -16,8 +16,6 @@ UIScene::UIScene(){
 
 	buttonEnd = new Button("image/ui/button.png", Vector2f(500.0, 530.0));
 	buttonEnd->setText("next end", 20);
-	buttonClear = new Button("image/ui/button.png", Vector2f(500.0, 390.0));
-	buttonClear->setText("Clear sweepGauge", 20);
 
 	scoreManager = new ScoreManager();
 	scoreManager->setLSFE(ScoreManager::Team::Left);
@@ -58,7 +56,6 @@ void UIScene::update(){
 	powerGauge->update();
 	button->update();
 	buttonEnd->update();
-	buttonClear->update();
 	scoreboard->update();
 	sweepingGauge->update();
 
@@ -70,9 +67,6 @@ void UIScene::update(){
 		scoreboard->pushScoreAndGoNextEnd(1,0);
 	}
 
-	if(buttonClear->isClicked()){
-		sweepingGauge->clearRecord();
-	}
 
 	sweepingRecord.setString(to_string(sweepingGauge->getSpeed()));
 }
@@ -83,7 +77,6 @@ void UIScene::draw(RenderWindow &window){
 	powerGauge->draw(window);
 	button->draw(window);
 	buttonEnd->draw(window);
-	buttonClear->draw(window);
 	scoreboard->draw(window);
 	minimap->draw(window);
 	window.draw(sweepingRecord) ;

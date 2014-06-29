@@ -6,10 +6,8 @@ using namespace std;
 class SweepingGauge{
 	private:
 		float sweepigSpeed;
-		int sweepingCount;
 		bool isPressed;
-
-		Clock clock;
+		list<Clock*> listClock;
 		
 
 	public:
@@ -17,6 +15,5 @@ class SweepingGauge{
 		~SweepingGauge();
 		void update();
 		void draw(RenderWindow &window);
-		void clearRecord();
 		float getSpeed();
 };
