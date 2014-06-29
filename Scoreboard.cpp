@@ -21,6 +21,13 @@ Scoreboard::Scoreboard(ScoreManager &scoreList, String teamNameTop, String teamN
 	bottom.spStone.setTexture(bottom.texStone);
 	texEndPanel.loadFromFile("image/ui/scoreboard.png");
 	spEndPanel.setTexture(texEndPanel);
+	
+	//flag
+	top.texFlag.loadFromFile("image/ui/flags/korea.png");
+	top.spFlag.setTexture(top.texFlag);
+	bottom.texFlag.loadFromFile("image/ui/flags/japan.png");
+	bottom.spFlag.setTexture(bottom.texFlag);
+
 
 
 
@@ -101,6 +108,8 @@ void Scoreboard::draw(RenderWindow &window){
 	top.spPanel.setPosition(window.mapPixelToCoords(Vector2i(0, 0)));
 	bottom.spPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y);
 	spEndPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y*2.0);
+	top.spFlag.setPosition(0.0f,0.0f);
+	bottom.spFlag.setPosition(0.0f,top.spPanel.getTexture()->getSize().y);
 
 	top.txtTeamName.setPosition(
 		top.spPanel.getPosition().x + top.txtTeamName.getLocalBounds().width/2,
@@ -136,6 +145,8 @@ void Scoreboard::draw(RenderWindow &window){
 
 	window.draw(top.spPanel);
 	window.draw(bottom.spPanel);
+	window.draw(top.spFlag);
+	window.draw(bottom.spFlag);
 	window.draw(spEndPanel);
 	window.draw(top.txtScore);
 	window.draw(bottom.txtScore);
