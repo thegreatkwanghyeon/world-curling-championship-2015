@@ -73,7 +73,7 @@ void GameScene::update()
 
 	world->Step(1/60.f, 8, 3);
 	
-	std::cout << "stone" << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
+	//std::cout << "stone" << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
 
 	if (view.getCenter().y - view.getSize().y / 2 >= -8000 + 600 + 27)
 	{

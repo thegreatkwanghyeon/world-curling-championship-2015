@@ -5,7 +5,8 @@ using namespace std;
 
 class PowerGauge{
 	private:
-		const float argumentMultiflier;
+		const float PI; //원주율
+		const float argumentMultiflier; //파워게이지의 진행속도
 		Texture texGauge;
 
 		Sprite spCover;
