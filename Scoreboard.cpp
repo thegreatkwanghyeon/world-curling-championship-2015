@@ -108,8 +108,8 @@ void Scoreboard::draw(RenderWindow &window){
 	top.spPanel.setPosition(window.mapPixelToCoords(Vector2i(0, 0)));
 	bottom.spPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y);
 	spEndPanel.setPosition(0.0, top.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y*2.0);
-	top.spFlag.setPosition(0.0f,0.0f);
-	bottom.spFlag.setPosition(0.0f,top.spPanel.getTexture()->getSize().y);
+	top.spFlag.setPosition(0.0f,top.spPanel.getPosition().y );
+	bottom.spFlag.setPosition(0.0f,top.spPanel.getTexture()->getSize().y + top.spPanel.getPosition().y );
 
 	top.txtTeamName.setPosition(
 		top.spPanel.getPosition().x + top.txtTeamName.getLocalBounds().width/2,
