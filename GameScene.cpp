@@ -2,7 +2,7 @@
 #include "GameScene.h"
 #include "Global.h"
 
-GameScene::GameScene() : lastStone(NULL), applyImpulse(true) {
+GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.1f) {
 
 	printf("make GameScene\n");
 
@@ -72,6 +72,8 @@ void GameScene::update()
 	uiScene->update();
 
 	world->Step(1/60.f, 8, 3);
+
+	cout << linearDamping << endl;
 	
 	//std::cout << "stone" << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
 
@@ -81,15 +83,22 @@ void GameScene::update()
 		view.setCenter(Vector2f(400, (lastStone->GetPosition().y * SCALE) - 200));
 	}
 
-	if ( applyImpulse && Keyboard::isKeyPressed(Keyboard::Space))
+	if ( applyImpulse)
 	{
-		std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
-		lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
-		lastStone->SetLinearDamping(0.1f);//감속
-	//	lastStone->SetAngularDamping(1000.0f);
-		//lastStone->ApplyForceToCenter(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), true);//1초간 지속적으로 충격을 주는 함수
-		//lastStone->ApplyTorque(100.f, true);//회전력
-		applyImpulse = false;
+		if (Keyboard::isKeyPressed(Keyboard::Space)){
+			std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
+			lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
+			lastStone->SetLinearDamping(linearDamping);//감속
+			//	lastStone->SetAngularDamping(1000.0f);
+			//lastStone->ApplyForceToCenter(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), true);//1초간 지속적으로 충격을 주는 함수
+			//lastStone->ApplyTorque(100.f, true);//회전력
+			applyImpulse = false;
+		}
+	}
+	else
+	{
+		linearDamping = 0.1 - (uiScene->getSpeed() / 500);
+		lastStone->SetLinearDamping(linearDamping);//감속
 	}
 	
 }

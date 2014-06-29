@@ -51,6 +51,11 @@ float UIScene::getPower()
 	return powerGauge->getValue();
 }
 
+float UIScene::getSpeed()
+{
+	return sweepingGauge->getSpeed();
+}
+
 void UIScene::update(){
 	arrow->update();
 	powerGauge->update();

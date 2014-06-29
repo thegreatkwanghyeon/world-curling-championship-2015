@@ -29,6 +29,8 @@ class GameScene : public SceneBase{
 
 		bool applyImpulse;
 
+		float linearDamping;
+
 	public:
 		GameScene();
 		~GameScene();

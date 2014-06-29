@@ -33,6 +33,7 @@ class UIScene : public SceneBase{
 
 		float getDirection();
 		float getPower();
+		float getSpeed();
 
 		void update();
 		void draw(RenderWindow &window);
