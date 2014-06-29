@@ -73,7 +73,7 @@ void GameScene::update()
 
 	world->Step(1/60.f, 8, 3);
 
-	cout << linearDamping << endl;
+	cout << lastStone->GetLinearVelocity().y << endl;
 	
 	//std::cout << "stone" << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
 
@@ -99,8 +99,22 @@ void GameScene::update()
 	{
 		linearDamping = 0.1 - (uiScene->getSpeed() / 500);
 		lastStone->SetLinearDamping(linearDamping);//°¨¼Ó
+		
+		if (lastStone->GetLinearVelocity().y >= -0.2)
+		{
+			uiScene->nextTurn();
+			createStone(400, 500);
+
+			view.setCenter(400, 300);
+
+			applyImpulse = true;
+
+		}
+		
 	}
 	
+
+
 }
 
 void GameScene::draw(RenderWindow &window){

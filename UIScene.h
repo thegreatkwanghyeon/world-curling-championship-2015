@@ -35,6 +35,8 @@ class UIScene : public SceneBase{
 		float getPower();
 		float getSpeed();
 
+		void nextTurn();
+
 		void update();
 		void draw(RenderWindow &window);
 };

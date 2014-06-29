@@ -56,6 +56,11 @@ float UIScene::getSpeed()
 	return sweepingGauge->getSpeed();
 }
 
+void UIScene::nextTurn()
+{
+	scoreboard->nextTurn();
+}
+
 void UIScene::update(){
 	arrow->update();
 	powerGauge->update();
