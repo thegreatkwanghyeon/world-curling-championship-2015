@@ -23,9 +23,9 @@ Scoreboard::Scoreboard(ScoreManager &scoreList, String teamNameTop, String teamN
 	spEndPanel.setTexture(texEndPanel);
 	
 	//flag
-	top.texFlag.loadFromFile("image/ui/flags/korea.png");
+	top.texFlag.loadFromFile("image/ui/flags/"+teamNameTop+".png");
 	top.spFlag.setTexture(top.texFlag);
-	bottom.texFlag.loadFromFile("image/ui/flags/japan.png");
+	bottom.texFlag.loadFromFile("image/ui/flags/"+teamNameBottom+".png");
 	bottom.spFlag.setTexture(bottom.texFlag);
 
 

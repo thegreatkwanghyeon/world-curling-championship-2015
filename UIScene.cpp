@@ -20,7 +20,7 @@ UIScene::UIScene(){
 	scoreManager = new ScoreManager();
 	scoreManager->setLSFE(ScoreManager::Team::Left);
 
-	scoreboard = new Scoreboard(*scoreManager, "KOR", "JPN");
+	scoreboard = new Scoreboard(*scoreManager, "CAN", "SWE");
 
 	font.loadFromFile("font/italicNumber.ttf");
 	sweepingGauge = new SweepingGauge();
