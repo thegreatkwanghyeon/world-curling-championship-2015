@@ -2,11 +2,13 @@
 #include "GameScene.h"
 #include "Global.h"
 
-GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.1f), moveView(false) {
+GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.2f), moveView(false), turn(false) {
 
 	printf("make GameScene\n");
 
-	stoneTexture.loadFromFile("image/stone.png");
+	redStoneTexture.loadFromFile("image/stone_red.png");
+	yellowStoneTexture.loadFromFile("image/stone_yellow.png");
+
 	groundTexture.loadFromFile("image/ground.png");
 
 	groundSprite.setTexture(groundTexture);
@@ -18,7 +20,7 @@ GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.1f
 	uiScene = new UIScene();
 
 	//createStone(400, -7000);
-	createStone(400, 500);
+	createStone(400, 500, turn);
 
 	//view.setCenter(Vector2f(400, lastStone->GetPosition().y * SCALE));
 
@@ -28,26 +30,8 @@ GameScene::~GameScene(){
 	delete uiScene;
 }
 
-void GameScene::createGround()
-{
-	b2BodyDef BodyDef;
-	BodyDef.position = b2Vec2(0, -8000+600);
-	BodyDef.type = b2_dynamicBody;
-	b2Body* Body = world->CreateBody(&BodyDef);
 
-	b2CircleShape Shape;
-	Shape.m_radius = STONE_DIAMETER / 2;
-	b2FixtureDef FixtureDef;
-	FixtureDef.density = 0.5f;
-	FixtureDef.friction = 1000.7f;
-	FixtureDef.shape = &Shape;
-	FixtureDef.restitution = 0.7f;
-	Body->CreateFixture(&FixtureDef);
-
-	lastStone = Body;
-}
-
-void GameScene::createStone(const int &x, const int &y)
+void GameScene::createStone(const int &x, const int &y, const int &color)
 {
 	b2BodyDef BodyDef;
 	BodyDef.position = b2Vec2(x / SCALE, y / SCALE);
@@ -60,8 +44,17 @@ void GameScene::createStone(const int &x, const int &y)
 	FixtureDef.density = 0.5f;
 	FixtureDef.friction = 1000.7f;
 	FixtureDef.shape = &Shape;
-	FixtureDef.restitution = 0.7f;
+	FixtureDef.restitution = 0.75f;
 	Body->CreateFixture(&FixtureDef);
+
+	if(color == 0)
+	{
+		Body->SetUserData("Red");
+	}
+	else
+	{
+		Body->SetUserData("Yellow");
+	}
 
 	lastStone = Body;
 }
@@ -75,7 +68,7 @@ void GameScene::update()
 
 	cout << lastStone->GetLinearVelocity().y << endl;
 	
-	//std::cout << "stone" << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
+	//std::cout << "stone : " << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
 
 	if (!moveView && view.getCenter().y - view.getSize().y / 2 >= -8000 + 600 + 27)
 	{
@@ -87,7 +80,7 @@ void GameScene::update()
 	{
 
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
-			std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
+			//std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
 			lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
 			lastStone->SetLinearDamping(linearDamping);//감속
 			//	lastStone->SetAngularDamping(1000.0f);
@@ -98,10 +91,10 @@ void GameScene::update()
 	}
 	else
 	{
-		linearDamping = 0.1 - (uiScene->getSpeed() / 500);
+		linearDamping = 0.2 - (uiScene->getSpeed() / 500);
 		lastStone->SetLinearDamping(linearDamping);//감속
 		
-		if (!moveView && lastStone->GetLinearVelocity().y >= -0.2)
+		if (!moveView && lastStone->GetLinearVelocity().y >= -0.9 &&  Keyboard::isKeyPressed(Keyboard::Return))
 		{
 
 			moveView = true;
@@ -119,12 +112,39 @@ void GameScene::update()
 
 		if (view.getCenter().y >= 300)
 		{
-			createStone(400, 500);
+			turn = !turn;
+
+			uiScene->clearStone();
+
+		for (b2Body* BodyIterator = world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
+			{
+				if (BodyIterator->GetType() == b2_dynamicBody)
+				{
+					if(BodyIterator->GetUserData() == "Red")
+					{
+						
+						uiScene->pushStone((BodyIterator->GetPosition().x * SCALE - 400)/3.375, (-(600-(BodyIterator->GetPosition().y * SCALE) - 7173))/3.375, Minimap::red);
+
+						
+
+					}
+					else
+					{
+						
+						uiScene->pushStone((BodyIterator->GetPosition().x * SCALE - 400)/3.375, (-(600-(BodyIterator->GetPosition().y * SCALE) - 7173))/3.375, Minimap::yellow);
+							//cout << BodyIterator->GetPosition().x * SCALE - 400 << "\t" << -( 600-(BodyIterator->GetPosition().y * SCALE) - 7173) << endl;
+					}
+				}
+			}
+
+			createStone(400, 500, turn);
 			applyImpulse = true;
 
 			moveView = false;
 		}
 	}
+
+	//cout << lastStone->GetPosition().x * SCALE - 400 << "\t" << -( 600-(lastStone->GetPosition().y * SCALE) - 7173) << endl;
 
 }
 
@@ -142,7 +162,14 @@ void GameScene::draw(RenderWindow &window){
 		{
 			sf::Sprite sprite;
 
-			sprite.setTexture(stoneTexture);
+			if(BodyIterator->GetUserData() == "Red"){
+				sprite.setTexture(redStoneTexture);
+			}
+			else
+			{
+				sprite.setTexture(yellowStoneTexture);
+			}
+
 			sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
 			sprite.setPosition(SCALE * BodyIterator->GetPosition().x, SCALE * BodyIterator->GetPosition().y);
 			sprite.setRotation(BodyIterator->GetAngle() * 180 / b2_pi);

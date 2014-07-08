@@ -47,7 +47,7 @@ class Minimap{
 		~Minimap();
 		void update();
 		void draw(RenderWindow &window);
-		void pushStone(float x, float y, int color);
+		void pushStone(float x, float y, int color);//¿øÁ¡ : 400, 7173
 		void removeStone(int idx);
 		void clearStone();
 };

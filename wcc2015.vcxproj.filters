@@ -25,6 +25,9 @@
     <Filter Include="소스 파일\UIElements\Score">
       <UniqueIdentifier>{5595b12a-dc37-4ce1-8c39-86cc7da9ddba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\UIElements\Team">
+      <UniqueIdentifier>{41ef56fd-cd18-43fb-8203-e74879d10d70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scoreboard.cpp">
@@ -75,6 +78,12 @@
     <ClCompile Include="SweepingGauge.cpp">
       <Filter>소스 파일\UIElements</Filter>
     </ClCompile>
+    <ClCompile Include="SelectScene.cpp">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TeamIndicator.cpp">
+      <Filter>소스 파일\UIElements\Team</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scoreboard.h">
@@ -124,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="SweepingGauge.h">
       <Filter>소스 파일\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectScene.h">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="TeamIndicator.h">
+      <Filter>소스 파일\UIElements\Team</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -14,7 +14,8 @@ const float SPEED = 34.5f;//¼Óµµ
 class GameScene : public SceneBase{
 	private:
 
-		Texture stoneTexture;
+		Texture redStoneTexture;
+		Texture yellowStoneTexture;
 		Texture groundTexture;
 
 		Sprite groundSprite;
@@ -30,7 +31,8 @@ class GameScene : public SceneBase{
 		bool applyImpulse;
 
 		float linearDamping;
-
+		
+		bool turn;
 		bool moveView;
 		float viewMovingSpeed;
 
@@ -38,8 +40,7 @@ class GameScene : public SceneBase{
 		GameScene();
 		~GameScene();
 
-		void createStone(const int &x, const int &y);
-		void createGround();
+		void createStone(const int &x, const int &y, const int &color);
 
 		void update();
 		void draw(RenderWindow &window);

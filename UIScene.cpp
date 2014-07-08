@@ -30,11 +30,7 @@ UIScene::UIScene(){
 	sweepingRecord.setColor(Color(255, 0, 0, 255));
 
 	minimap = new Minimap();
-	minimap->pushStone(randX, randY, Minimap::Color::red);
-	minimap->pushStone(randY/2.0, randX/3.0, Minimap::Color::yellow);
-	minimap->pushStone(0.0, 0.0, Minimap::Color::red);
-	minimap->pushStone(0.0, 0.0, Minimap::Color::yellow); //이건 지워질 예정
-	minimap->removeStone(3);  //지움
+
 	
 }
 UIScene::~UIScene(){
@@ -59,6 +55,19 @@ float UIScene::getSpeed()
 void UIScene::nextTurn()
 {
 	scoreboard->nextTurn();
+}
+
+void UIScene::pushStone(float x, float y, int color)
+{
+	minimap->pushStone(x, y, color);
+}
+
+void UIScene::removeStone(int idx){
+	minimap->removeStone(idx);
+}
+
+void UIScene::clearStone(){
+	minimap->clearStone();
 }
 
 void UIScene::update(){

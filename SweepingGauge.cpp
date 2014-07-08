@@ -8,7 +8,6 @@ SweepingGauge::~SweepingGauge(){
 }
 
 void SweepingGauge::update(){
-	printf("listClock.size() = %d\n", listClock.size());
 	if(Keyboard::isKeyPressed(Keyboard::Space) && isPressed==false){
 		isPressed = true;
 		listClock.push_back(new Clock());
