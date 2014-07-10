@@ -23,10 +23,18 @@ void PowerGauge::update(){
 		argumentValue -= 4*PI;
 	}
 	if(argumentValue>=2*PI){
-		powerValue = (float)((cos(argumentValue)+1)/8.f + 0.525);
+		powerValue = (float)((cos(argumentValue)+1)/8.f + 0.915);
 	}else{
-		powerValue = (float)((-cos(argumentValue)+3)/4.f + 0.275);
+		powerValue = (float)((-cos(argumentValue)+3)/4.f + 0.665);
 	}
+
+
+	printf("powerValue = %f\n", powerValue);
+	//powerValue = 1.125f;
+
+	//bottom : 1.125f
+	//button : 1.165f
+	//top : 1.2f
 
 	/*
 		powerValue의 그래프 : http://goo.gl/Lo30P6

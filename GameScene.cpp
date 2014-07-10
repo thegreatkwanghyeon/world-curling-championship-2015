@@ -76,7 +76,7 @@ void GameScene::update()
 		view.setCenter(Vector2f(400, (lastStone->GetPosition().y * SCALE) - 200));
 	}
 
-	if ( applyImpulse)
+	if (applyImpulse)
 	{
 
 		if (Keyboard::isKeyPressed(Keyboard::Space)){
@@ -91,7 +91,7 @@ void GameScene::update()
 	}
 	else
 	{
-		linearDamping = 0.2 - (uiScene->getSpeed() / 500);
+		linearDamping = 0.15 - (uiScene->getSpeed() / 500);
 		lastStone->SetLinearDamping(linearDamping);//°¨¼Ó
 		
 		if (!moveView && lastStone->GetLinearVelocity().y >= -0.9 &&  Keyboard::isKeyPressed(Keyboard::Return))
