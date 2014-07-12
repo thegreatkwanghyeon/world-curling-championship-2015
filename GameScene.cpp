@@ -88,7 +88,7 @@ void GameScene::update()
 	
 	//std::cout << "stone : " << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
 
-	if (!moveView && view.getCenter().y - view.getSize().y / 2 >= -8000 + 600 + 27)
+	if (lastStone != NULL && !moveView && view.getCenter().y - view.getSize().y / 2 >= -8000 + 600 + 27)
 	{
 		//view.move(0, lastStone->GetLinearVelocity().y * 0.01);//뷰 이동
 		view.setCenter(Vector2f(400, (lastStone->GetPosition().y * SCALE) - 200));
@@ -97,7 +97,7 @@ void GameScene::update()
 	if (applyImpulse)
 	{
 
-		if (Keyboard::isKeyPressed(Keyboard::Space)){
+		if (Keyboard::isKeyPressed(Keyboard::Space) && lastStone != NULL){
 			//std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
 			lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
 			lastStone->SetLinearDamping(linearDamping);//감속
@@ -138,6 +138,7 @@ void GameScene::update()
 
 			int scoreCount = 0;
 			int color = -1;
+			bool goNextEnd = false;
 
 			for (std::vector<float>::iterator it = distances.begin(); it != distances.end(); it++)
 			{
@@ -185,15 +186,23 @@ void GameScene::update()
 
 				if (color == Minimap::red)
 				{
-					uiScene->pushScore(0, scoreCount);
+					goNextEnd = uiScene->pushScore(0, scoreCount);
 				}
 				else
 				{
-					uiScene->pushScore(scoreCount, 0);
+					goNextEnd = uiScene->pushScore(scoreCount, 0);
 				}
 			}
 
 			//----------------------------------------------
+
+			if (goNextEnd)
+			{
+				for (b2Body* BodyIterator = world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
+				{
+					world->DestroyBody(BodyIterator);
+				}
+			}
 
 			moveView = true;
 			viewMovingSpeed = abs((view.getCenter().y + 300) / 20);

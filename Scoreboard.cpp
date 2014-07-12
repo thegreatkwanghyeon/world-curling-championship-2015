@@ -183,10 +183,10 @@ void Scoreboard::nextTurn(){
 	}
 }
 
-void Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
+bool Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
 	if(!top.vecStone.empty() || !bottom.vecStone.empty()){
 		printf("Can't go to next end\n");
-		return;
+		return false;
 	}
 	scoreList->pushScore(leftScore, rightScore);
 	currentEnd++;

@@ -39,7 +39,7 @@ class UIScene : public SceneBase{
 		void removeStone(int idx);
 		void clearStone();
 
-		void pushScore(const int& left, const int& right);
+		bool pushScore(const int& left, const int& right);
 
 		void nextTurn();
 

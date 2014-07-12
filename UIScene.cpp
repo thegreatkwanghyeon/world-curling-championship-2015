@@ -70,9 +70,9 @@ void UIScene::clearStone(){
 	minimap->clearStone();
 }
 
-void UIScene::pushScore(const int& left, const int& right)
+bool UIScene::pushScore(const int& left, const int& right)
 {
-	scoreboard->pushScoreAndGoNextEnd(left, right);
+	return scoreboard->pushScoreAndGoNextEnd(left, right);
 }
 
 void UIScene::update(){
