@@ -13,11 +13,11 @@ Scoreboard::Scoreboard(ScoreManager &scoreList, String teamNameTop, String teamN
 	//Graphic processing
 	top.texPanel.loadFromFile("image/ui/scoreboard.png");
 	top.spPanel.setTexture(top.texPanel);
-	top.texStone.loadFromFile("image/ui/yellowstone.png");
+	top.texStone.loadFromFile("image/ui/redstone.png");
 	top.spStone.setTexture(top.texStone);
 	bottom.texPanel.loadFromFile("image/ui/scoreboard.png");
 	bottom.spPanel.setTexture(bottom.texPanel);
-	bottom.texStone.loadFromFile("image/ui/redstone.png");
+	bottom.texStone.loadFromFile("image/ui/yellowstone.png");
 	bottom.spStone.setTexture(bottom.texStone);
 	texEndPanel.loadFromFile("image/ui/scoreboard.png");
 	spEndPanel.setTexture(texEndPanel);
