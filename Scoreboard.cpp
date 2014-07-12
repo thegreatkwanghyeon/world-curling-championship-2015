@@ -135,6 +135,15 @@ void Scoreboard::draw(RenderWindow &window){
 		bottom.spPanel.getPosition().y + bottom.spPanel.getTexture()->getSize().y/2 - bottom.txtScore.getLocalBounds().height/1.25
 	);
 
+	for(auto& stone: top.vecStone)
+		stone.setPosition(top.spPanel.getPosition().x + top.texPanel.getSize().x + (&stone-&top.vecStone[0])*stone.getTexture()->getSize().x, 
+										top.spPanel.getPosition().y +top.texPanel.getSize().y/2 - stone.getTexture()->getSize().y/2);
+	for(auto& stone: bottom.vecStone)
+		stone.setPosition(bottom.spPanel.getPosition().x + bottom.texPanel.getSize().x + (&stone-&bottom.vecStone[0])*stone.getTexture()->getSize().x, 
+										top.spPanel.getPosition().y + bottom.texPanel.getSize().y/2 - stone.getTexture()->getSize().y/2 + bottom.spPanel.getTexture()->getSize().y);
+
+
+
 	if(currentTurn == ScoreManager::Team::Left)
 		spCursor.setPosition(top.txtScore.getPosition().x-30, top.txtScore.getPosition().y+3);
 	else if(currentTurn == ScoreManager::Team::Right)
