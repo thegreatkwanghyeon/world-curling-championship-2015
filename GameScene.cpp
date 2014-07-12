@@ -183,7 +183,7 @@ void GameScene::update()
 					}
 				}
 
-				if (color == Minimap::yellow)
+				if (color == Minimap::red)
 				{
 					uiScene->pushScore(0, scoreCount);
 				}
