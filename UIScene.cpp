@@ -70,6 +70,11 @@ void UIScene::clearStone(){
 	minimap->clearStone();
 }
 
+void UIScene::pushScore(const int& left, const int& right)
+{
+	scoreboard->pushScoreAndGoNextEnd(left, right);
+}
+
 void UIScene::update(){
 	arrow->update();
 	powerGauge->update();

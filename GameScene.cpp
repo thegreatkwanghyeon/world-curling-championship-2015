@@ -2,6 +2,8 @@
 #include "GameScene.h"
 #include "Global.h"
 
+#include <algorithm>
+
 GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.2f), moveView(false), turn(false) {
 
 	printf("make GameScene\n");
@@ -61,12 +63,28 @@ void GameScene::createStone(const int &x, const int &y, const int &color)
 
 void GameScene::update()
 {
+	//화면 밖으로 나간 바디 삭제
+	for (b2Body* BodyIterator = world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
+	{
+		if (BodyIterator->GetType() == b2_dynamicBody)
+		{
+			if ((BodyIterator->GetPosition().x * SCALE < 0 || BodyIterator->GetPosition().x * SCALE > 800) || BodyIterator->GetPosition().y * SCALE < -8000)
+			{
+				if (lastStone == BodyIterator)
+				{
+					lastStone = NULL;
+				}
+				world->DestroyBody(BodyIterator);
+			}
+		}
+	}
 
 	uiScene->update();
 
 	world->Step(1/60.f, 8, 3);
 
-	cout << lastStone->GetLinearVelocity().y << endl;
+
+	//cout << lastStone->GetLinearVelocity().y << endl;
 	
 	//std::cout << "stone : " << 600-(lastStone->GetPosition().y * SCALE) << std::endl;
 
@@ -92,10 +110,90 @@ void GameScene::update()
 	else
 	{
 		linearDamping = 0.15 - (uiScene->getSpeed() / 500);
-		lastStone->SetLinearDamping(linearDamping);//감속
+
+		if (lastStone!=NULL)
+			lastStone->SetLinearDamping(linearDamping);//감속
 		
-		if (!moveView && lastStone->GetLinearVelocity().y >= -0.9 &&  Keyboard::isKeyPressed(Keyboard::Return))
+		if (!moveView && (lastStone == NULL || lastStone->GetLinearVelocity().y >= -0.9) && Keyboard::isKeyPressed(Keyboard::Return))
 		{
+
+			// ------------------점수 계산-------------
+
+			std::map<float, b2Body*> stoneInfo;
+			std::vector<float> distances;
+
+			for (b2Body* BodyIterator = world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
+			{
+				if (BodyIterator->GetType() == b2_dynamicBody)
+				{
+					float x = BodyIterator->GetPosition().x * SCALE, y = BodyIterator->GetPosition().y * SCALE;
+					float distance = sqrt((x - 400)*(x - 400) + (y + 7173 - 600)*(y + 7173 - 600));
+
+					distances.push_back(distance);
+					stoneInfo[distance] = BodyIterator;
+				}
+			}
+
+			std::sort(distances.begin(), distances.end(), [](const float a, const float b)->bool{return a < b; });
+
+			int scoreCount = 0;
+			int color = -1;
+
+			for (std::vector<float>::iterator it = distances.begin(); it != distances.end(); it++)
+			{
+				if (color == -1){
+					if (stoneInfo[*it]->GetUserData() == "Red")
+					{
+						color = Minimap::red;
+						scoreCount += 1;
+					}
+					else
+					{
+						color = Minimap::yellow;
+						scoreCount += 1;
+					}
+				}
+				else
+				{
+					if (color == Minimap::red)
+					{
+
+						if (stoneInfo[*it]->GetUserData() != "Red")
+						{
+							break;
+						}
+						else
+						{
+							scoreCount += 1;
+							printf("%d\n", scoreCount);
+						}
+					}
+					else
+					{
+
+						if (stoneInfo[*it]->GetUserData() != "Yellow")
+						{
+							break;
+						}
+						else
+						{
+							scoreCount += 1;
+							printf("%d\n", scoreCount);
+						}
+					}
+				}
+
+				if (color == Minimap::yellow)
+				{
+					uiScene->pushScore(0, scoreCount);
+				}
+				else
+				{
+					uiScene->pushScore(scoreCount, 0);
+				}
+			}
+
+			//----------------------------------------------
 
 			moveView = true;
 			viewMovingSpeed = abs((view.getCenter().y + 300) / 20);
@@ -124,8 +222,6 @@ void GameScene::update()
 					{
 						
 						uiScene->pushStone((BodyIterator->GetPosition().x * SCALE - 400)/3.375, (-(600-(BodyIterator->GetPosition().y * SCALE) - 7173))/3.375, Minimap::red);
-
-						
 
 					}
 					else

@@ -29,7 +29,7 @@ void PowerGauge::update(){
 	}
 
 
-	printf("powerValue = %f\n", powerValue);
+	//printf("powerValue = %f\n", powerValue);
 	//powerValue = 1.125f;
 
 	//bottom : 1.125f
