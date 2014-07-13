@@ -197,12 +197,10 @@ void GameScene::update()
 				if (color == Minimap::yellow)
 				{
 					goNextEnd = uiScene->pushScore(0, scoreCount);
-					cout << goNextEnd << endl;
 				}
 				else
 				{
 					goNextEnd = uiScene->pushScore(scoreCount, 0);
-					cout << goNextEnd << endl;
 				}
 
 			if (goNextEnd)
@@ -210,6 +208,7 @@ void GameScene::update()
 				cout << goNextEnd << endl;
 
 				turn = uiScene->getCurrentTurn();
+				turn = !turn;
 
 				for (b2Body* BodyIterator = world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
 				{
