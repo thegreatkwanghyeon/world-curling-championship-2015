@@ -10,3 +10,5 @@ namespace constants{
 }
 extern sf::View view;
 extern float timeRatio;
+extern sf::String globalTeamNameLeft;
+extern sf::String globalTeamNameRight;

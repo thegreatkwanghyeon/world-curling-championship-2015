@@ -10,6 +10,8 @@ GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.2f
 
 	redStoneTexture.loadFromFile("image/stone_red.png");
 	yellowStoneTexture.loadFromFile("image/stone_yellow.png");
+	redStoneTexture.setSmooth(true);
+	yellowStoneTexture.setSmooth(true);
 
 	groundTexture.loadFromFile("image/ground.png");
 
@@ -101,7 +103,7 @@ void GameScene::update()
 			//std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
 			lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
 			lastStone->SetLinearDamping(linearDamping);//감속
-			//	lastStone->SetAngularDamping(1000.0f);
+			lastStone->SetAngularDamping(0.15f);
 			//lastStone->ApplyForceToCenter(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), true);//1초간 지속적으로 충격을 주는 함수
 			//lastStone->ApplyTorque(100.f, true);//회전력
 			applyImpulse = false;

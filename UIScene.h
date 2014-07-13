@@ -16,8 +16,6 @@ class UIScene : public SceneBase{
 	private:
 		Arrow *arrow;
 		PowerGauge *powerGauge;
-		Button *button;
-		Button *buttonEnd;
 		ScoreManager *scoreManager;
 		Scoreboard *scoreboard;
 		SweepingGauge *sweepingGauge;
@@ -25,7 +23,6 @@ class UIScene : public SceneBase{
 
 
 		Font font;
-		Text sweepingRecord;
 
 	public:
 		UIScene();

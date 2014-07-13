@@ -3,9 +3,11 @@
 
 Arrow::Arrow() : additionalDirection(0), direction(0), PI(atan(1.0)*4){
 	texArrow.loadFromFile("image/ui/arrow.png");
+	texArrow.setSmooth(true);
 	spArrow.setTexture(texArrow);
 	spArrow.setOrigin(spArrow.getLocalBounds().width/2, spArrow.getLocalBounds().height);
-	spArrow.setPosition(300,300);
+	spArrow.setPosition(400.0f,500.0f);
+	
 }
 
 Arrow::Arrow(String path) : additionalDirection(0), direction(0), PI(atan(1.0)*4){

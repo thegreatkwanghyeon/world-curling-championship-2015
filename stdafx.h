@@ -12,6 +12,7 @@
 #include <tchar.h>
 #include <vector>
 #include <list>
+#include <random>
 
 #include <SFML/Graphics.hpp>
 

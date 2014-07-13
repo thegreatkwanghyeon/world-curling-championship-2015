@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "Scoreboard.h"
+#include "Global.h"
 
 Scoreboard::Scoreboard(ScoreManager &scoreList, String teamNameTop, String teamNameBottom){
 
 	//Parameter initializing
 	this->scoreList = &scoreList;
-	top.txtTeamName.setString(teamNameTop);
-	bottom.txtTeamName.setString(teamNameBottom);
+	top.txtTeamName.setString(globalTeamNameLeft);
+	bottom.txtTeamName.setString(globalTeamNameRight);
 	currentTurn = scoreList.getLSFE();
 	currentEnd = 1;
 
@@ -23,9 +24,9 @@ Scoreboard::Scoreboard(ScoreManager &scoreList, String teamNameTop, String teamN
 	spEndPanel.setTexture(texEndPanel);
 	
 	//flag
-	top.texFlag.loadFromFile("image/ui/flags/"+teamNameTop+".png");
+	top.texFlag.loadFromFile("image/ui/flags/"+globalTeamNameLeft+".png");
 	top.spFlag.setTexture(top.texFlag);
-	bottom.texFlag.loadFromFile("image/ui/flags/"+teamNameBottom+".png");
+	bottom.texFlag.loadFromFile("image/ui/flags/"+globalTeamNameRight+".png");
 	bottom.spFlag.setTexture(bottom.texFlag);
 
 
