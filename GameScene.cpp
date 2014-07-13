@@ -194,17 +194,20 @@ void GameScene::update()
 
 			uiScene->nextTurn();
 
-				if (color == Minimap::red)
+				if (color == Minimap::yellow)
 				{
 					goNextEnd = uiScene->pushScore(0, scoreCount);
+					cout << goNextEnd << endl;
 				}
 				else
 				{
 					goNextEnd = uiScene->pushScore(scoreCount, 0);
+					cout << goNextEnd << endl;
 				}
 
 			if (goNextEnd)
 			{
+				cout << goNextEnd << endl;
 
 				turn = uiScene->getCurrentTurn();
 

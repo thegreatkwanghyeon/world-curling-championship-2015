@@ -216,4 +216,6 @@ bool Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
 		bottom.vecStone.at(i).setPosition(bottom.texPanel.getSize().x + i*bottom.vecStone.at(i).getTexture()->getSize().x, 
 										bottom.texPanel.getSize().y/2 - bottom.vecStone.at(i).getTexture()->getSize().y/2 + bottom.spPanel.getTexture()->getSize().y);
 	}
+
+	return true;
 }
