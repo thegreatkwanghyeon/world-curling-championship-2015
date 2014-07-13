@@ -67,6 +67,11 @@ bool UIScene::pushScore(const int& left, const int& right)
 	return scoreboard->pushScoreAndGoNextEnd(left, right);
 }
 
+int UIScene::getCurrentTurn()
+{
+	return scoreboard->getCurrentTurn();
+}
+
 void UIScene::update(){
 	arrow->update();
 	powerGauge->update();

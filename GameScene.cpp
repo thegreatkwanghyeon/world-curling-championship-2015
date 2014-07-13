@@ -202,8 +202,12 @@ void GameScene::update()
 				{
 					goNextEnd = uiScene->pushScore(scoreCount, 0);
 				}
+
 			if (goNextEnd)
 			{
+
+				turn = uiScene->getCurrentTurn();
+
 				for (b2Body* BodyIterator = world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
 				{
 					world->DestroyBody(BodyIterator);

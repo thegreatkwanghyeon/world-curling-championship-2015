@@ -184,6 +184,11 @@ void Scoreboard::nextTurn(){
 	}
 }
 
+int Scoreboard::getCurrentTurn()
+{
+	return currentTurn;
+}
+
 bool Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
 	if(!top.vecStone.empty() || !bottom.vecStone.empty()){
 		printf("Can't go to next end\n");

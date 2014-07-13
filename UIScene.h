@@ -40,6 +40,8 @@ class UIScene : public SceneBase{
 
 		void nextTurn();
 
+		int getCurrentTurn();
+
 		void update();
 		void draw(RenderWindow &window);
 };
