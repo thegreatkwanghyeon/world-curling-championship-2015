@@ -144,6 +144,9 @@ void GameScene::update()
 
 			for (std::vector<float>::iterator it = distances.begin(); it != distances.end(); it++)
 			{
+
+				uiScene->nextTurn();
+
 				if (color == -1){
 					if (stoneInfo[*it]->GetUserData() == "Red")
 					{
@@ -208,8 +211,6 @@ void GameScene::update()
 
 			moveView = true;
 			viewMovingSpeed = abs((view.getCenter().y + 300) / 20);
-
-			uiScene->nextTurn();
 
 		}
 		

@@ -60,9 +60,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일\Basis</Filter>
     </ClCompile>
-    <ClCompile Include="Tileset.cpp">
-      <Filter>소스 파일\Basis</Filter>
-    </ClCompile>
     <ClCompile Include="arrow.cpp">
       <Filter>소스 파일\UIElements</Filter>
     </ClCompile>
@@ -114,9 +111,6 @@
       <Filter>소스 파일\Basis</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>소스 파일\Basis</Filter>
-    </ClInclude>
-    <ClInclude Include="Tileset.h">
       <Filter>소스 파일\Basis</Filter>
     </ClInclude>
     <ClInclude Include="arrow.h">

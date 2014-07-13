@@ -189,6 +189,7 @@ bool Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
 		printf("Can't go to next end\n");
 		return false;
 	}
+
 	scoreList->pushScore(leftScore, rightScore);
 	currentEnd++;
 
