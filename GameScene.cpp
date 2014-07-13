@@ -145,8 +145,6 @@ void GameScene::update()
 			for (std::vector<float>::iterator it = distances.begin(); it != distances.end(); it++)
 			{
 
-				uiScene->nextTurn();
-
 				if (color == -1){
 					if (stoneInfo[*it]->GetUserData() == "Red")
 					{
@@ -189,6 +187,13 @@ void GameScene::update()
 					}
 				}
 
+
+			}
+
+			//----------------------------------------------
+
+			uiScene->nextTurn();
+
 				if (color == Minimap::red)
 				{
 					goNextEnd = uiScene->pushScore(0, scoreCount);
@@ -197,10 +202,6 @@ void GameScene::update()
 				{
 					goNextEnd = uiScene->pushScore(scoreCount, 0);
 				}
-			}
-
-			//----------------------------------------------
-
 			if (goNextEnd)
 			{
 				for (b2Body* BodyIterator = world->GetBodyList(); BodyIterator != 0; BodyIterator = BodyIterator->GetNext())
