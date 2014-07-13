@@ -32,7 +32,10 @@ void Arrow::draw(RenderWindow &window){
 
 void Arrow::setReferencePoint(Vector2f point){
 	direction = atan2(point.y - spArrow.getPosition().y, point.x - spArrow.getPosition().x);
-	//direction = PI/-2;
+	if(-0.75 > direction/PI)
+		direction = PI * -0.75;
+	else if(direction/PI > -0.25)
+		direction  = PI * -0.25;
 }
 
 float Arrow::getDirection(){
