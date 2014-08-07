@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameScene.h"
 #include "Global.h"
+#include "TitleScene.h"
 
 #include <algorithm>
 
@@ -53,7 +54,7 @@ void GameScene::createStone(const int &x, const int &y, const int &color)
 
 	if(color == 0)
 	{
-		Body->SetUserData("Red");
+		Body->SetUserData(BodyData("Red"));
 	}
 	else
 	{
@@ -101,7 +102,7 @@ void GameScene::update()
 
 		if (Keyboard::isKeyPressed(Keyboard::Space) && lastStone != NULL){
 			//std::cout << "-------------------------\nPower : " + to_string(uiScene->getPower()) + "\nDirection : " + to_string(uiScene->getDirection()) + "\n-------------------------\n" << std::endl;
-			lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
+			lastStone->ApplyLinearImpulse(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED * delta.getElapsedTime().asSeconds(), sin(uiScene->getDirection()) * uiScene->getPower() * SPEED *  delta.getElapsedTime().asSeconds()), lastStone->GetWorldCenter(), true);//한번에 충격 주는 함수
 			lastStone->SetLinearDamping(linearDamping);//감속
 			lastStone->SetAngularDamping(0.15f);
 			//lastStone->ApplyForceToCenter(b2Vec2(cos(uiScene->getDirection()) * uiScene->getPower() * SPEED, sin(uiScene->getDirection()) * uiScene->getPower() * SPEED), true);//1초간 지속적으로 충격을 주는 함수
@@ -116,7 +117,7 @@ void GameScene::update()
 		if (lastStone!=NULL)
 			lastStone->SetLinearDamping(linearDamping);//감속
 		
-		if (!moveView && (lastStone == NULL || lastStone->GetLinearVelocity().y >= -0.9) && Keyboard::isKeyPressed(Keyboard::Return))
+		if (!moveView && (lastStone == NULL || lastStone->GetLinearVelocity().y >= -0.9))
 		{
 
 			// ------------------점수 계산-------------
@@ -214,6 +215,9 @@ void GameScene::update()
 				{
 					world->DestroyBody(BodyIterator);
 				}
+
+				Director::getInstance()->replaceScene(new TitleScene());
+
 			}
 
 			moveView = true;
@@ -260,7 +264,7 @@ void GameScene::update()
 	}
 
 	//cout << lastStone->GetPosition().x * SCALE - 400 << "\t" << -( 600-(lastStone->GetPosition().y * SCALE) - 7173) << endl;
-
+	delta.restart();
 }
 
 void GameScene::draw(RenderWindow &window){

@@ -29,6 +29,11 @@ UIScene::~UIScene(){
 
 }
 
+int UIScene::getCurrentEnd()
+{
+	return scoreboard->getCurrentEnd();
+}
+
 float UIScene::getDirection()
 {
 	return arrow->getDirection();

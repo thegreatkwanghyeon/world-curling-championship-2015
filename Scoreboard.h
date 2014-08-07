@@ -57,6 +57,7 @@ class Scoreboard{
 		void nextTurn();
 		bool pushScoreAndGoNextEnd(int leftScore, int rightScore);
 		int getCurrentTurn();
+		int getCurrentEnd();
 
 		
 

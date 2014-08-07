@@ -9,10 +9,31 @@ using namespace std;
 
 const float SCALE = 30.f;
 const float STONE_DIAMETER = 1.7f;//픽셀
-const float SPEED = 34.5f;//속도
+const float SPEED = 34.5f * 60.0f;//속도
 
 class GameScene : public SceneBase{
 	private:
+
+		using BodyData = struct BodyData
+		{
+			BodyData(string color, bool freeguard, Vector2f originalPosition)
+			{
+				this->color = color;
+				this->freeguard = freeguard;
+				this->originalPosition = originalPosition;
+			}
+
+			BodyData(string color)
+			{
+				this->color = color;
+			}
+
+			~BodyData(){}
+
+			string color;
+			bool freeguard;
+			Vector2f originalPosition;
+		};
 
 		Texture redStoneTexture;
 		Texture yellowStoneTexture;
@@ -35,6 +56,8 @@ class GameScene : public SceneBase{
 		bool turn;
 		bool moveView;
 		float viewMovingSpeed;
+
+		Clock delta;
 
 	public:
 		GameScene();
