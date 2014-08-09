@@ -38,6 +38,8 @@ class UIScene : public SceneBase{
 
 		bool pushScore(const int& left, const int& right);
 
+		int getCurrentEnd();
+
 		void nextTurn();
 
 		int getCurrentTurn();

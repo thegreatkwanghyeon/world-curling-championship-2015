@@ -190,11 +190,12 @@ int Scoreboard::getCurrentTurn()
 }
 
 bool Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
+	
 	if(!top.vecStone.empty() || !bottom.vecStone.empty()){
 		printf("Can't go to next end\n");
 		return false;
 	}
-
+	
 	scoreList->pushScore(leftScore, rightScore);
 	currentEnd++;
 
@@ -218,4 +219,9 @@ bool Scoreboard::pushScoreAndGoNextEnd(int leftScore, int rightScore){
 	}
 
 	return true;
+}
+
+int Scoreboard::getCurrentEnd()
+{
+	return currentEnd;
 }
