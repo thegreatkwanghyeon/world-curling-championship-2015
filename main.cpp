@@ -5,6 +5,7 @@
 #include "GameScene.h"
 #include "UIScene.h"
 #include "SelectScene.h"
+#include "MainScene.h"
 
 using namespace sf;
 using namespace std; 
@@ -16,7 +17,7 @@ int main(){
 	settings.antialiasingLevel = 8;
 
 	Director *m_pDirector = Director::getInstance();
-	m_pDirector->pushScene(new SelectScene());
+	m_pDirector->pushScene(new MainScene());
 
 	view.reset(FloatRect(0, 0, constants::INTERNAL_WIDTH, constants::INTERNAL_HEIGHT));
 

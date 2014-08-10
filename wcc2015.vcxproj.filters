@@ -81,6 +81,12 @@
     <ClCompile Include="TeamIndicator.cpp">
       <Filter>소스 파일\UIElements\Team</Filter>
     </ClCompile>
+    <ClCompile Include="tileset.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scoreboard.h">
@@ -133,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="TeamIndicator.h">
       <Filter>소스 파일\UIElements\Team</Filter>
+    </ClInclude>
+    <ClInclude Include="tileset.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>소스 파일\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
