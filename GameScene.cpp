@@ -29,6 +29,10 @@ GameScene::GameScene() : lastStone(NULL), applyImpulse(true), linearDamping(0.2f
 
 	//view.setCenter(Vector2f(400, lastStone->GetPosition().y * SCALE));
 
+	
+	myContactListener = new ContactListener();
+	world->SetContactListener(myContactListener);
+
 }
 GameScene::~GameScene(){
 	delete world;
@@ -54,7 +58,8 @@ void GameScene::createStone(const int &x, const int &y, const int &color)
 
 	if(color == 0)
 	{
-		Body->SetUserData(BodyData("Red"));
+		
+		Body->SetUserData("Red");
 	}
 	else
 	{

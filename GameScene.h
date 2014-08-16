@@ -3,6 +3,8 @@
 #include "Director.h"
 #include <Box2D/Box2D.h>
 #include "UIScene.h"
+#include <SFML/Audio.hpp>
+#include "ContactListener.h"
 
 using namespace sf;
 using namespace std;
@@ -58,7 +60,7 @@ class GameScene : public SceneBase{
 		float viewMovingSpeed;
 
 		Clock delta;
-
+		ContactListener *myContactListener;
 	public:
 		GameScene();
 		~GameScene();

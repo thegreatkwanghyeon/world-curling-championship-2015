@@ -9,6 +9,8 @@ using namespace std;
 
 class MainScene : public SceneBase{
 	private:
+		Texture texBg;
+		Sprite spBg;
 		Texture texMainLogo;
 		Sprite spMainLogo;
 		Button *startButton;

@@ -81,11 +81,11 @@
     <ClCompile Include="TeamIndicator.cpp">
       <Filter>소스 파일\UIElements\Team</Filter>
     </ClCompile>
-    <ClCompile Include="tileset.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="MainScene.cpp">
       <Filter>소스 파일\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactListener.cpp">
+      <Filter>소스 파일\Basis</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -140,11 +140,11 @@
     <ClInclude Include="TeamIndicator.h">
       <Filter>소스 파일\UIElements\Team</Filter>
     </ClInclude>
-    <ClInclude Include="tileset.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="MainScene.h">
       <Filter>소스 파일\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactListener.h">
+      <Filter>소스 파일\Basis</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

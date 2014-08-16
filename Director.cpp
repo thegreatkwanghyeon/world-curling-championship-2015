@@ -8,9 +8,16 @@ Director::Director(){
 }
 
 Director::~Director(){
+	/*
 	size_t size = sceneList.size();
 	for(unsigned int i=0;i<size;i++){
 		delete *(sceneList.begin());
+		sceneList.erase(sceneList.begin());
+	}
+	*/
+
+	for (auto i : sceneList)
+	{
 		sceneList.erase(sceneList.begin());
 	}
 }
